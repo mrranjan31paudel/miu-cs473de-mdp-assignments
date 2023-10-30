@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Dinner Decider</string>
+    <string name="app_logo_content_description">Dinner decider app logo</string>
+    <string name="default_selected_food_name">Click on DECIDE! to select</string>
+    <string name="foo_field_hint">Add new food&#8230;</string>
+    <string name="add_food_button_label">Add Food</string>
+    <string name="decide_button_label">Decide!</string>
+</resources>
