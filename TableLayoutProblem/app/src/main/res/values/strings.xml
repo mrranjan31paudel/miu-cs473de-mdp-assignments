@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Table Layout Problem</string>
+    <string name="android_version_edit_text_hint">Enter Android Version</string>
+    <string name="android_code_name_edit_text_hint">Enter Android Code Name</string>
+    <string name="add_button_label">Add</string>
+
+    <string name="version_header_label">Version</string>
+    <string name="code_name_header_label">Code Name</string>
+
+    <string name="seed_android_version_1">Android 9.0</string>
+    <string name="seed_android_version_2">Android 8.0</string>
+    <string name="seed_android_code_name_1">Pie</string>
+    <string name="seed_android_code_name_2">Oreo</string>
+</resources>
