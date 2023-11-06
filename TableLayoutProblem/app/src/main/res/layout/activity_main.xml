@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/white"
+    android:stretchColumns="0,1"
+    android:padding="8dp">
+
+    <TableRow>
+        <EditText
+            android:id="@+id/android_version"
+            android:hint="@string/android_version_edit_text_hint"
+            android:inputType="text"
+            android:layout_height="50dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black_a"
+            android:layout_span="2"/>
+    </TableRow>
+
+    <TableRow>
+        <EditText
+            android:id="@+id/android_code_name"
+            android:hint="@string/android_code_name_edit_text_hint"
+            android:inputType="text"
+            android:layout_height="50dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black_a"
+            android:layout_span="2"/>
+    </TableRow>
+    <TableRow>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/add_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@color/blue_1"
+            android:textColor="@color/white"
+            android:text="@string/add_button_label"
+            android:layout_height="wrap_content"
+            android:layout_span="2"
+            android:layout_marginBottom="16dp"
+            android:onClick="onAddButtonClick"/>
+    </TableRow>
+    <!--    header row -->
+    <TableRow>
+        <TextView
+            android:textSize="20sp"
+            android:padding="8dp"
+            android:text="@string/version_header_label"
+            android:textColor="@color/black"
+            android:background="@color/blue_2"
+            />
+        <TextView
+            android:textSize="20sp"
+            android:padding="8dp"
+            android:text="@string/code_name_header_label"
+            android:textColor="@color/black"
+            android:background="@color/blue_2"
+            />
+    </TableRow>
+    <!--    data rows from now on -->
+    <TableRow>
+        <TextView
+            android:padding="4dp"
+            android:text="@string/seed_android_version_1"
+            android:textColor="@color/black"
+            android:background="@drawable/bordered_cell_back_1" />
+        <TextView
+            android:padding="4dp"
+            android:text="@string/seed_android_code_name_1"
+            android:textColor="@color/black"
+            android:background="@drawable/bordered_cell_back_1" />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:padding="4dp"
+            android:text="@string/seed_android_version_2"
+            android:textColor="@color/black"
+            android:background="@drawable/bordered_cell_back_1" />
+        <TextView
+            android:padding="4dp"
+            android:text="@string/seed_android_code_name_2"
+            android:textColor="@color/black"
+            android:background="@drawable/bordered_cell_back_1" />
+    </TableRow>
+
+</TableLayout>
