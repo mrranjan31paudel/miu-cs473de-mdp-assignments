@@ -8,4 +8,13 @@
     <string name="sign_in_button_label">Sign In</string>
     <string name="dont_have_account_label">Don\'t have an account?</string>
     <string name="create_a_new_account">Create a new account</string>
+
+    <string name="electronics_category_label">Electronics</string>
+    <string name="clothing_category_label">Clothing</string>
+    <string name="beauty_category_label">Beauty</string>
+    <string name="food_category_label">Food</string>
+
+    <string name="shop_by_category_title">Shop by Categories</string>
+
+    <string name="welcome_message">Welcome, %1$s</string>
 </resources>

@@ -134,13 +134,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/password" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/sign_in_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="104dp"
                 android:background="@drawable/button_filled"
                 android:text="@string/sign_in_button_label"
                 android:textColor="@color/white"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onSignIn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/password" />
@@ -154,7 +157,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button">
+                app:layout_constraintTop_toBottomOf="@+id/sign_in_button">
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -181,7 +184,7 @@
             </TableLayout>
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/create_new_account_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
