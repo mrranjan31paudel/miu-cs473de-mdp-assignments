@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">WalmartLoginPage</string>
     <string name="login_page_title">Sign in to your account</string>
+    <string name="register_page_title">Create your account</string>
 
     <string name="email_label">Email Address (Required)</string>
     <string name="password_label">Password (Required)</string>
@@ -8,6 +9,13 @@
     <string name="sign_in_button_label">Sign In</string>
     <string name="dont_have_account_label">Don\'t have an account?</string>
     <string name="create_a_new_account">Create a new account</string>
+
+    <string name="register_first_name_label">First Name<sup>*</sup></string>
+    <string name="register_last_name_label">Last Name<sup>*</sup></string>
+    <string name="register_email_address_label">Email Address<sup>*</sup></string>
+    <string name="register_password_label">Password<sup>*</sup></string>
+    <string name="register_button_label">Create Account</string>
+    <string name="required_field_info"><sup>*</sup> Required fields</string>
 
     <string name="electronics_category_label">Electronics</string>
     <string name="clothing_category_label">Clothing</string>

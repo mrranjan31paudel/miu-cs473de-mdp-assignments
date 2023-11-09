@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShoppingActivity">
+    tools:context=".ShoppingActivity"
+    android:background="@color/white">
 
     <TableLayout
         android:layout_width="match_parent"
@@ -53,7 +54,8 @@
                 android:layout_margin="8dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:onClick="onCategoryClick">
+                android:onClick="onCategoryClick"
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -84,7 +86,8 @@
                 android:layout_margin="8dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:onClick="onCategoryClick">
+                android:onClick="onCategoryClick"
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -120,7 +123,8 @@
                 android:layout_margin="8dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:onClick="onCategoryClick">
+                android:onClick="onCategoryClick"
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -151,7 +155,8 @@
                 android:layout_margin="8dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:onClick="onCategoryClick">
+                android:onClick="onCategoryClick"
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
