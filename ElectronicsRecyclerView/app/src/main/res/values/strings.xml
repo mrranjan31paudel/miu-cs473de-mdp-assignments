@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ElectronicsRecyclerView</string>
+
+    <string name="add_button_label">Add</string>
+    <string name="view_cart_button_label">View Cart</string>
+
+    <string name="dollar">$</string>
+
+    <string name="home_button_label">Home</string>
+</resources>
