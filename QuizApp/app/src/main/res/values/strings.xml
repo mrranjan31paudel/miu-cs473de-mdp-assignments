@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">QuizApp</string>
+
+    <string name="question_1">What is the correct syntax to print \"Hello World!\" in Kotlin?</string>
+    <string name="question_1_option_1">console.log(\"Hello World!\")</string>
+    <string name="question_1_option_2">System.out.println(\"Hello World!\")</string>
+    <string name="question_1_option_3">println(\"Hello World!\")</string>
+    <string name="question_1_option_4">cout &lt;&lt; \"Hello World!\"</string>
+
+    <string name="question_2">Select correct statements to get \"Hello John\", if `val name = "John"`</string>
+    <string name="question_2_option_1">\"Hello ${name}\"</string>
+    <string name="question_2_option_2">\"Hello {name}\"</string>
+    <string name="question_2_option_3">\"Hello $name\"</string>
+    <string name="question_2_option_4">\"Hello %name\"</string>
+
+    <string name="submit_button_label">Submit</string>
+    <string name="reset_button_label">Reset</string>
+</resources>
