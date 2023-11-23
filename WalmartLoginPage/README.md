@@ -1,3 +1,15 @@
-![](./screenshots/Screenshot%20from%202023-11-05%2019-58-09.png)
+# Screenshots
 
-*Walmart sign in activity*
+<div style="page-break-after:always"><img height="678px" alt="Sign In Screen" src="screenshots-assignment-4/Screenshot_20231107_215648.png"><br><em>Fig 1: Sign In Screen</em></div>
+<div style="page-break-after:always"><img height="678px" alt="Wrong email password combination" src="screenshots-assignment-4/Screenshot_20231107_215734.png"><br><em>Fig 2: Email and password validation showing the validation error</em></div>
+<div style="page-break-after:always"><img height="678px" alt="Signed In" src="screenshots-assignment-4/Screenshot_20231107_215810.png"><br><em>Fig 3: User taken to dash board after successful sign in by entering right email and password</em></div>
+<div style="page-break-after:always"><img height="678px" alt="Category Selection" src="screenshots-assignment-4/Screenshot_20231107_215832.png"><br><em>Fig 4: Toast message to indicate category selection by clicking</em></div>
+<div style="page-break-after:always"><img height="678px" alt="Back to signin screen" src="screenshots-assignment-4/Screenshot_20231109_000111.png"><br><em>Fig 5: Back to sign in screen/activity</em></div>
+<div style="page-break-after:always"><img height="678px" alt="Register screen" src="screenshots-assignment-4/Screenshot_20231109_000154.png"><br><em>Fig 6: User taken to create new account screen after clicking <code>Create new account</code> button</em></div>
+<div style="page-break-after:always"><img height="678px" alt="Registration form input validation" src="screenshots-assignment-4/Screenshot_20231109_000245.png"><br><em>Fig 7: Validating the required <code>Password</code> field</em></div>
+<div style="page-break-after:always"><img height="678px" alt="Successful registration" src="screenshots-assignment-4/Screenshot_20231109_000312.png"><br><em>Fig 8: User taken back to sign in screen after successful account creation after entering all the required inputs</em></div>
+<div style="page-break-after:always"><img height="678px" alt="Enter newly created account credential in sign in page" src="screenshots-assignment-4/Screenshot_20231109_000405.png"><br><em>Fig 9: User entering newly created account credential</em></div>
+<div style="page-break-after:always"><img height="678px" alt="Successful sign in for new account" src="screenshots-assignment-4/Screenshot_20231109_000422.png"><br><em>Fig 10: User successfully signed in with newly created account</em></div>
+<div style="page-break-after:always"><img height="678px" alt="Forgot password without email" src="screenshots-assignment-4/Screenshot_20231109_003112.png"><br><em>Fig 11: User clicking forgot password link without entering email and getting the error toast message</em></div>
+<div style="page-break-after:always"><img height="678px" alt="Forgot password with non-existing email" src="screenshots-assignment-4/Screenshot_20231109_003200.png"><br><em>Fig 12: Error shown for click on Forgot password with non-existing email address</em></div>
+<div style="page-break-after:always"><img height="678px" alt="Implicit email intent" src="screenshots-assignment-4/Screenshot_20231109_003243.png"><br><em>Fig 13: User presented with options to send email/message due to implicit intent</em>
