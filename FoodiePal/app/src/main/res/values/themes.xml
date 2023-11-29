@@ -2,7 +2,11 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.FoodiePal" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/green_1</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/yellow_1</item>
+        <item name="colorTertiary">@color/orange_1</item>
+        <item name="colorError">@color/red_1</item>
     </style>
 
     <style name="Theme.FoodiePal" parent="Base.Theme.FoodiePal" />
