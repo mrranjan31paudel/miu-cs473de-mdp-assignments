@@ -1,6 +1,8 @@
 package edu.miu.cs473de.lab6.foodiepal.ui.auth
 
 import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,10 +11,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
-import edu.miu.cs473de.lab6.foodiepal.AuthenticationActivity
+import edu.miu.cs473de.lab6.foodiepal.CoreActivity
 import edu.miu.cs473de.lab6.foodiepal.R
+import edu.miu.cs473de.lab6.foodiepal.data.user.User
 import edu.miu.cs473de.lab6.foodiepal.databinding.FragmentLoginBinding
-import edu.miu.cs473de.lab6.foodiepal.databinding.FragmentRegisterBinding
 import edu.miu.cs473de.lab6.foodiepal.errors.ValidationException
 import edu.miu.cs473de.lab6.foodiepal.service.UserService
 
@@ -24,11 +26,6 @@ import edu.miu.cs473de.lab6.foodiepal.service.UserService
 class LoginFragment : Fragment() {
 
     private var loginViewBinding: FragmentLoginBinding? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {}
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -80,8 +77,19 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun goToAppActivity() {
-        // TODO
+    private fun goToCoreActivity() {
+        val coreActivityIntent = Intent(context, CoreActivity::class.java)
+        startActivity(coreActivityIntent)
+    }
+
+    private fun setUserSession(user: User, sharedPreferences: SharedPreferences) {
+
+        with (sharedPreferences.edit()) {
+            putInt(getString(R.string.logged_in_user_id), user.id)
+            putString(getString(R.string.logged_in_user_email), user.email)
+            putString(getString(R.string.logged_in_user_name), "${user.firstName} ${user.lastName}")
+            apply()
+        }
     }
 
     private fun onCreateNewAccountButtonClick(view: View) {
@@ -107,14 +115,10 @@ class LoginFragment : Fragment() {
                 .show()
 
             val authenticationActivity = activity
-            val sharedPreferences = authenticationActivity?.getPreferences(Context.MODE_PRIVATE) ?: return
-            with (sharedPreferences.edit()) {
-                putInt(getString(R.string.logged_in_user_id), user.id)
-                putString(getString(R.string.logged_in_user_email), user.email)
-                putString(getString(R.string.logged_in_user_name), "${user.firstName} ${user.lastName}")
-                apply()
-            }
-            // TODO: go to Foodiepal activity
+            val sharedPreferences = authenticationActivity?.getSharedPreferences("app_pref", Context.MODE_PRIVATE) ?: return
+            setUserSession(user, sharedPreferences)
+
+            goToCoreActivity()
         }
         catch (e: ValidationException) {
             fieldMap[e.field]?.editText?.error = e.message

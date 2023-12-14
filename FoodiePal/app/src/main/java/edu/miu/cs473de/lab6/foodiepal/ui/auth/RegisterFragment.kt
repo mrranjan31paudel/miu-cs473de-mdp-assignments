@@ -1,6 +1,5 @@
 package edu.miu.cs473de.lab6.foodiepal.ui.auth
 
-import android.database.sqlite.SQLiteConstraintException
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -23,11 +22,6 @@ class RegisterFragment : Fragment() {
 
     private var registerViewBinding: FragmentRegisterBinding? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {}
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,8 +31,8 @@ class RegisterFragment : Fragment() {
 
         val loginButton = view.findViewById<Button>(R.id.go_to_login_button)
         val createButton = view.findViewById<Button>(R.id.create_button)
-        loginButton.setOnClickListener { view -> onLoginButtonClick(view) }
-        createButton.setOnClickListener { view -> onCreateAccount(view) }
+        loginButton.setOnClickListener { v -> onLoginButtonClick(v) }
+        createButton.setOnClickListener { v -> onCreateAccount(v) }
 
         return view
     }

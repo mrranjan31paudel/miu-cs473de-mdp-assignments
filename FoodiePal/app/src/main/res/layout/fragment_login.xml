@@ -79,15 +79,18 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_button" />
+
         <Button
-            style="@style/Widget.Material3.Button.OutlinedButton"
             android:id="@+id/go_to_create_new_account_button"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/create_new_account_label"
             android:clickable="true"
             android:focusable="true"
+            android:text="@string/create_new_account_label"
+            android:textSize="14sp"
+            app:strokeColor="@color/green_1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dont_have_account_label" />

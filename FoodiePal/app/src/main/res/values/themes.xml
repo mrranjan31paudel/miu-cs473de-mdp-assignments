@@ -10,4 +10,8 @@
     </style>
 
     <style name="Theme.FoodiePal" parent="Base.Theme.FoodiePal" />
+
+    <style name="Theme.FullScreenDialogTheme" parent="Theme.FoodiePal">
+        <item name="android:windowNoTitle">false</item>
+    </style>
 </resources>

@@ -130,15 +130,18 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/create_button" />
+
         <Button
-            style="@style/Widget.Material3.Button.OutlinedButton"
             android:id="@+id/go_to_login_button"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/action_login_short"
             android:clickable="true"
             android:focusable="true"
+            android:text="@string/action_login_short"
+            android:textSize="14sp"
+            app:strokeColor="@color/green_1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/already_have_account_label" />

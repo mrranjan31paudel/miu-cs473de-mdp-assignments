@@ -18,9 +18,30 @@
     <string name="create_new_account_label">Create new account</string>
     <string name="create_label">Create</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="recipes_label">Recipes</string>
+    <string name="meal_planner_label">Meal Planner</string>
+    <string name="blog_label">Blog</string>
+    <string name="contact_label">Contact</string>
+    <string name="about_me_label">About Me</string>
 
     <string name="logged_in_user_id">LOGGED_IN_USER_ID</string>
     <string name="logged_in_user_email">LOGGED_IN_USER_EMAIL</string>
     <string name="logged_in_user_name">LOGGED_IN_USER_NAME</string>
+
+    <string name="logout">Logout</string>
+
+    <string name="rating_total_suffix">%1$s/5</string>
+
+    <string name="add_fab_desc">Float action button: add new item</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="rating_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
 </resources>
