@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.core.MealPlanDialogFragment"
+    android:id="@+id/mealPlanDialogForm"
+    android:padding="32dp"
+    android:backgroundTint="@color/white"
+    app:backgroundInsetStart="1dp"
+    app:backgroundInsetEnd="1dp"
+    app:backgroundInsetTop="1dp"
+    app:backgroundInsetBottom="1dp">
+
+    <TextView
+        android:id="@+id/formTitle"
+        style="@style/TextAppearance.Material3.HeadlineMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Meal Plan For"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/mealPlanDate"
+        style="@style/TextAppearance.Material3.HeadlineSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/formTitle" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/mealPlanDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Meal Plan"
+        android:lines="4"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mealPlanDate">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/saveButton"
+        style="?attr/materialIconButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="4dp"
+        android:contentDescription="Save"
+        app:icon="@drawable/done_icon"
+        app:iconTint="@color/green_1"
+        app:rippleColor="@color/green_1"
+        app:iconSize="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/cancelButton"
+        app:layout_constraintTop_toBottomOf="@id/mealPlanDescription" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        style="?attr/materialIconButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="4dp"
+        android:contentDescription="Cancel"
+        app:icon="@drawable/close_icon"
+        app:iconTint="@color/orange_1"
+        app:rippleColor="@color/orange_1"
+        app:iconSize="24dp"
+        app:layout_constraintEnd_toStartOf="@id/deleteButton"
+        app:layout_constraintTop_toBottomOf="@id/mealPlanDescription" />
+    <Button
+        android:id="@+id/deleteButton"
+        style="?attr/materialIconButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="4dp"
+        android:contentDescription="Delete"
+        app:icon="@drawable/delete_icon"
+        app:iconTint="@color/red_1"
+        app:rippleColor="@color/red_1"
+        app:iconSize="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mealPlanDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,14 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.core.MealPlannerFragment">
+    tools:context=".ui.core.MealPlannerFragment"
+    android:id="@+id/mealPlannerFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/meal_planner_label" />
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:id="@+id/monthHolder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <Button
+                android:id="@+id/prevMonthButton"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="go to previous month"
+                app:icon="@drawable/left_arrow"
+                app:iconSize="32dp"/>
+
+            <TextView
+                android:id="@+id/monthTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="16sp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:textAlignment="center"
+                app:drawableStartCompat="@drawable/calendar_icon"
+                app:drawableTint="@color/blue_1" />
+
+            <Button
+                android:id="@+id/nextMonthButton"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="go to next month"
+                app:icon="@drawable/right_arrow"
+                app:iconSize="32dp"/>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/meal_planner_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/monthHolder" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

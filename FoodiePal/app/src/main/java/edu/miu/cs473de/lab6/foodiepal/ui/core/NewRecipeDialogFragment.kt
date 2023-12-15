@@ -95,7 +95,7 @@ class NewRecipeDialogFragment : DialogFragment() {
     }
 
     companion object {
-        val TAG: String? = "new_recipe_fragment"
+        const val TAG: String = "new_recipe_fragment"
 
         /**
          * Use this factory method to create a new instance of
