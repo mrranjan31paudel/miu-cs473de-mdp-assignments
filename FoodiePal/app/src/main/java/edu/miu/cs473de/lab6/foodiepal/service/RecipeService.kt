@@ -40,9 +40,9 @@ class RecipeService {
             validateNewRecipeData(trimmedName, cookingTime, trimmedRating, trimmedDescription)
 
             val recipeDao = DatabaseService.db?.recipeDao()
-            val recipe = Recipe(0, 0, trimmedName, cookingTime.toInt(), trimmedRating.toFloat(), trimmedDescription, authorId)
+            val recipe = Recipe(0, 0, trimmedName, cookingTime.toInt(), trimmedRating.toFloat(), trimmedDescription, authorId, null)
             val newRecipeId = runBlocking {
-                return@runBlocking recipeDao?.createRecipe(recipe)
+                return@runBlocking recipeDao?.createRecipe(recipe.toEntity())
             }
 
             return (newRecipeId ?: 0L).toInt()
@@ -75,7 +75,14 @@ class RecipeService {
         fun createManyRecipes(recipes: ArrayList<Recipe>) {
             val recipeDao = DatabaseService.db?.recipeDao()
             runBlocking {
-                recipeDao?.bulkInsertRecipe(recipes)
+                recipeDao?.bulkInsertRecipe(recipes.map { r -> r.toEntity() } as ArrayList)
+            }
+        }
+
+        fun deleteRecipe(recipe: Recipe) {
+            val recipeDao = DatabaseService.db?.recipeDao()
+            runBlocking {
+                recipeDao?.deleteRecipe(recipe.toEntity())
             }
         }
     }

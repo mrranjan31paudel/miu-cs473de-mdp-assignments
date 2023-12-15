@@ -1,16 +1,16 @@
 package edu.miu.cs473de.lab6.foodiepal
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import edu.miu.cs473de.lab6.foodiepal.data.recipe.Recipe
 
-class RecipeRecyclerViewAdapter(var context: Context?, var recipes: ArrayList<Recipe>): RecyclerView.Adapter<RecipeRecyclerViewAdapter.RecipeViewHolder>() {
+class RecipeRecyclerViewAdapter(var context: Fragment, var recipes: ArrayList<Recipe>, var onRecipeContextMenuListeners: OnRecipeContextMenuListeners): RecyclerView.Adapter<RecipeRecyclerViewAdapter.RecipeViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -35,9 +35,20 @@ class RecipeRecyclerViewAdapter(var context: Context?, var recipes: ArrayList<Re
         holder.recipeImage.setImageResource(imgSrc)
         holder.recipeName.text = recipes[position].name
         holder.recipeCookingTime.text = getHHMMStringFromMinute(recipes[position].cookingTimeInMin)
-        holder.recipeRating.text = context?.getString(R.string.rating_total_suffix, recipes[position].rating.toString()) ?: "N/A"
+        holder.recipeRating.text = context.getString(R.string.rating_total_suffix, recipes[position].rating.toString()) ?: "N/A"
         holder.recipeDesc.text = recipes[position].description
         holder.recipeImage.contentDescription = "${recipes[position].name} image"
+        holder.authorName.text = "by ${recipes[position].authorName ?: "Unknown"}"
+        context.registerForContextMenu(holder.recipeContainer)
+        holder.recipeContainer.setOnCreateContextMenuListener { menu, v, menuInfo ->
+            println("Hello: " + menu)
+            println("Hello: " + v)
+            println("Hello: " + menuInfo)
+            println("Hello: " + recipes[position])
+            println("Hello: " + position)
+
+            onRecipeContextMenuListeners.onRecipeContextMenuCreate(menu, v, menuInfo, recipes[position], position)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -50,5 +61,7 @@ class RecipeRecyclerViewAdapter(var context: Context?, var recipes: ArrayList<Re
         var recipeCookingTime: TextView = recipeView.findViewById(R.id.item_recipe_cooking_time)
         var recipeRating: TextView = recipeView.findViewById(R.id.item_recipe_rating)
         var recipeDesc: TextView = recipeView.findViewById(R.id.item_recipe_description)
+        var authorName: TextView = recipeView.findViewById(R.id.itemRecipeAuthorName)
+        var recipeContainer: ConstraintLayout = recipeView.findViewById(R.id.recipeItemContainer)
     }
 }

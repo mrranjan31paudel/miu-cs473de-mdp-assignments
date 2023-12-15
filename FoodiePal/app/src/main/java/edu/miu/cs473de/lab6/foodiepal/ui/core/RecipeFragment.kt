@@ -1,24 +1,22 @@
 package edu.miu.cs473de.lab6.foodiepal.ui.core
 
-import android.content.DialogInterface
+import android.content.Context
 import android.os.Bundle
+import android.view.ContextMenu
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewbinding.ViewBinding
-import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.snackbar.Snackbar
+import edu.miu.cs473de.lab6.foodiepal.OnRecipeContextMenuListeners
 import edu.miu.cs473de.lab6.foodiepal.R
 import edu.miu.cs473de.lab6.foodiepal.RecipeRecyclerViewAdapter
 import edu.miu.cs473de.lab6.foodiepal.data.recipe.Recipe
 import edu.miu.cs473de.lab6.foodiepal.databinding.FragmentRecipeBinding
 import edu.miu.cs473de.lab6.foodiepal.service.RecipeService
-import edu.miu.cs473de.lab6.foodiepal.ui.auth.RegisterFragment
 
 /**
  * A simple [Fragment] subclass.
@@ -30,6 +28,9 @@ class RecipeFragment : Fragment() {
     private lateinit var viewBinding: FragmentRecipeBinding
     private lateinit var recipesRecyclerView: RecyclerView
     private lateinit var recipes: ArrayList<Recipe>
+    private var loggedInUserId: Int = 0
+    private var selectedRecipe: Recipe? = null
+    private var selectedRecipePosition = -1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,9 +42,83 @@ class RecipeFragment : Fragment() {
         recipesRecyclerView = view.findViewById<RecyclerView>(R.id.recipes_recycler_view)
         recipesRecyclerView.layoutManager = LinearLayoutManager(activity)
         recipes = initializeRecipes()
-        recipesRecyclerView.adapter = RecipeRecyclerViewAdapter(context, recipes)
+        loggedInUserId = getLoggedInUserId()
+        val activity = this.activity
+        recipesRecyclerView.adapter = RecipeRecyclerViewAdapter(this, recipes, object: OnRecipeContextMenuListeners {
+            override fun onRecipeContextMenuCreate(
+                menu: ContextMenu,
+                view: View,
+                menuInfo: ContextMenu.ContextMenuInfo?,
+                recipe: Recipe,
+                position: Int
+            ) {
+                println("Hello: 1")
+                val menuInflater = activity?.menuInflater ?: return
+                println("Hello: 2")
+                menuInflater.inflate(R.menu.recipe_options, menu)
+                println("Hello: 3")
+                val deleteOption = menu.findItem(R.id.deleteRecipeOption)
+                println("Hello: 4")
+                selectedRecipe = recipe
+                selectedRecipePosition = position
+                deleteOption.isVisible = recipe.authorId == loggedInUserId
+                println("Hello: 5")
+            }
+        })
 
         return view
+    }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        val flag = when(item.itemId) {
+            R.id.shareRecipeOption -> {
+                onRecipeShare()
+                true
+            }
+            R.id.deleteRecipeOption -> {
+                onRecipeDelete()
+                true
+            }
+            else -> super.onContextItemSelected(item)
+        }
+        return flag
+    }
+
+    private fun onRecipeShare() {
+        // do social sharing
+        selectedRecipe = null
+        selectedRecipePosition = -1
+    }
+
+    private fun onRecipeDelete() {
+        if (selectedRecipe != null && selectedRecipePosition > -1) {
+
+            if (selectedRecipe?.authorId != loggedInUserId) {
+                Snackbar.make(viewBinding.root, "Action not allowed!", Snackbar.LENGTH_SHORT)
+                    .setBackgroundTint(resources.getColor(R.color.red_1))
+                    .setActionTextColor(resources.getColor(R.color.white))
+                    .show()
+                return
+            }
+
+            try {
+                RecipeService.deleteRecipe(selectedRecipe!!)
+                Snackbar.make(viewBinding.root, "Recipe deleted successfully!", Snackbar.LENGTH_SHORT)
+                    .setBackgroundTint(resources.getColor(R.color.green_1))
+                    .setActionTextColor(resources.getColor(R.color.white))
+                    .show()
+                recipes.removeAt(selectedRecipePosition)
+                recipesRecyclerView.adapter?.notifyItemRemoved(selectedRecipePosition)
+            }
+            catch (e: Exception) {
+                Snackbar.make(viewBinding.root, "Action not allowed!", Snackbar.LENGTH_SHORT)
+                    .setBackgroundTint(resources.getColor(R.color.red_1))
+                    .setActionTextColor(resources.getColor(R.color.white))
+                    .show()
+            }
+            selectedRecipe = null
+            selectedRecipePosition = -1
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,7 +126,7 @@ class RecipeFragment : Fragment() {
 
         viewBinding = FragmentRecipeBinding.bind(view)
 
-        viewBinding.addNewRecipeButton.setOnClickListener{v ->
+        viewBinding.addNewRecipeButton.setOnClickListener { v ->
             openNewRecipeFormDialog()
         }
     }
@@ -60,6 +135,12 @@ class RecipeFragment : Fragment() {
         val recipe = RecipeService.getRecipeById(recipeId) ?: return
         recipes.add(recipe)
         recipesRecyclerView.adapter?.notifyItemInserted(recipes.size - 1)
+    }
+
+    private fun getLoggedInUserId(): Int {
+        val sharedPreferences = activity?.getSharedPreferences("app_pref", Context.MODE_PRIVATE) ?: return 0
+
+        return sharedPreferences.getInt(getString(R.string.logged_in_user_id), 0)
     }
 
     private fun initializeRecipes(): ArrayList<Recipe> {
@@ -71,13 +152,13 @@ class RecipeFragment : Fragment() {
 
         val recipes = ArrayList<Recipe>()
 
-        recipes.add(Recipe(0, R.drawable.pizza, "Pizza", 60, 4.5f, "Ingredients: flour, cheese, marinara", 1))
-        recipes.add(Recipe(0, R.drawable.pizza, "Pizza", 60, 4.5f, "Ingredients: flour, cheese, marinara sauce, chicken, olives", 1))
-        recipes.add(Recipe(0, R.drawable.pizza, "Pizza", 60, 4.5f, "Ingredients: flour, cheese, marinara sauce, chicken, olives", 1))
-        recipes.add(Recipe(0, R.drawable.pizza, "Pizza", 60, 4.5f, "Ingredients: flour, cheese, marinara sauce, chicken, olives", 1))
-        recipes.add(Recipe(0, R.drawable.pizza, "Pizza", 60, 4.5f, "Ingredients: flour, cheese, marinara sauce, chicken, olives", 1))
-        recipes.add(Recipe(0, R.drawable.pizza, "Pizza", 60, 4.5f, "Ingredients: flour, cheese, marinara sauce, chicken, olives", 1))
-        recipes.add(Recipe(0, R.drawable.pizza, "Pizza", 60, 4.5f, "Ingredients: flour, cheese, marinara sauce, chicken, olives", 1))
+        recipes.add(Recipe(0, R.drawable.pizza, "Pizza", 60, 4.5f, "Ingredients: flour, cheese, marinara", 1, "Dummy User"))
+        recipes.add(Recipe(0, R.drawable.pizza, "Pizza", 60, 4.5f, "Ingredients: flour, cheese, marinara sauce, chicken, olives", 1, "Dummy User"))
+        recipes.add(Recipe(0, R.drawable.pizza, "Pizza", 60, 4.5f, "Ingredients: flour, cheese, marinara sauce, chicken, olives", 1, "Dummy User"))
+        recipes.add(Recipe(0, R.drawable.pizza, "Pizza", 60, 4.5f, "Ingredients: flour, cheese, marinara sauce, chicken, olives", 1, "Dummy User"))
+        recipes.add(Recipe(0, R.drawable.pizza, "Pizza", 60, 4.5f, "Ingredients: flour, cheese, marinara sauce, chicken, olives", 1, "Dummy User"))
+        recipes.add(Recipe(0, R.drawable.pizza, "Pizza", 60, 4.5f, "Ingredients: flour, cheese, marinara sauce, chicken, olives", 1, "Dummy User"))
+        recipes.add(Recipe(0, R.drawable.pizza, "Pizza", 60, 4.5f, "Ingredients: flour, cheese, marinara sauce, chicken, olives", 1, "Dummy User"))
 
         return recipes
     }
