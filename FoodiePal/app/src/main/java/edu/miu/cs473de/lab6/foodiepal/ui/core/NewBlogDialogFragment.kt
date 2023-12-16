@@ -2,35 +2,56 @@ package edu.miu.cs473de.lab6.foodiepal.ui.core
 
 import android.app.Dialog
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentManager
+import androidx.viewbinding.ViewBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import edu.miu.cs473de.lab6.foodiepal.R
-import edu.miu.cs473de.lab6.foodiepal.databinding.FragmentNewRecipeBinding
+import edu.miu.cs473de.lab6.foodiepal.data.blog.Blog
+import edu.miu.cs473de.lab6.foodiepal.databinding.FragmentNewBlogDialogBinding
 import edu.miu.cs473de.lab6.foodiepal.errors.ValidationException
-import edu.miu.cs473de.lab6.foodiepal.service.RecipeService
+import edu.miu.cs473de.lab6.foodiepal.service.BlogService
 
-class NewRecipeDialogFragment : DialogFragment() {
 
-    private lateinit var viewBinding: FragmentNewRecipeBinding
+/**
+ * A simple [Fragment] subclass.
+ * Use the [NewBlogDialogFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
+class NewBlogDialogFragment : DialogFragment() {
+
+    private lateinit var viewBinding: FragmentNewBlogDialogBinding
+    private var loggedInUserId = 0
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        loggedInUserId = getLoggedInUserId()
+        viewBinding = FragmentNewBlogDialogBinding.inflate(LayoutInflater.from(context))
+        viewBinding.postBlogButton.setOnClickListener { postNewBlog() }
+        viewBinding.cancelButton.setOnClickListener { dismiss() }
+    }
 
     override fun getTheme(): Int {
         return R.style.Theme_FoodiePal
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewBinding = FragmentNewRecipeBinding.inflate(LayoutInflater.from(context))
-
-        viewBinding.createNewRecipeButton.setOnClickListener{ addNewRecipe() }
-        viewBinding.cancelButton.setOnClickListener { dismiss() }
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_new_blog_dialog, container, false)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -51,27 +72,23 @@ class NewRecipeDialogFragment : DialogFragment() {
         return sharedPreferences.getInt(getString(R.string.logged_in_user_id), 0)
     }
 
-    private fun addNewRecipe() {
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun postNewBlog() {
         val fieldMap = HashMap<String, TextInputLayout?>()
-        fieldMap["newRecipeName"] = viewBinding.newRecipeName
-        fieldMap["newRecipeCookingTime"] = viewBinding.newRecipeCookingTime
-        fieldMap["newRecipeRating"] = viewBinding.newRecipeRating
-        fieldMap["newRecipeDescription"] = viewBinding.newRecipeDescription
+        fieldMap["blogTitle"] = viewBinding.blogTitle
+        fieldMap["blogContent"] = viewBinding.blogContent
 
-        viewBinding.createNewRecipeButton.isEnabled = false
+        viewBinding.postBlogButton.isEnabled = false
         viewBinding.cancelButton.isEnabled = false
 
         try {
-            val newRecipeId = RecipeService.createRecipe(
-                fieldMap["newRecipeName"]?.editText?.text.toString(),
-                fieldMap["newRecipeCookingTime"]?.editText?.text.toString(),
-                fieldMap["newRecipeRating"]?.editText?.text.toString(),
-                fieldMap["newRecipeDescription"]?.editText?.text.toString(),
-                getLoggedInUserId())
-            for (inputLayout: TextInputLayout? in fieldMap.values) {
-                inputLayout?.editText?.text?.clear()
-            }
-            parentFragmentManager.setFragmentResult("on_creation_success", bundleOf("newRecipeId" to newRecipeId))
+            val newBlogId = BlogService.postNewBlog(
+                fieldMap["blogTitle"]?.editText?.text.toString(),
+                fieldMap["blogContent"]?.editText?.text.toString(),
+                loggedInUserId
+            )
+
+            parentFragmentManager.setFragmentResult("on_creation_success", bundleOf("newBlogId" to newBlogId))
             dismiss()
         }
         catch (e: ValidationException) {
@@ -85,24 +102,23 @@ class NewRecipeDialogFragment : DialogFragment() {
                 .show()
         }
         finally {
-            viewBinding.createNewRecipeButton.isEnabled = true
+            viewBinding.postBlogButton.isEnabled = true
             viewBinding.cancelButton.isEnabled = true
         }
     }
 
     companion object {
-        const val TAG: String = "new_recipe_fragment"
-
+        val TAG = "blog_form"
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
          *
-         * @return A new instance of fragment NewRecipeFragment.
+         * @return A new instance of fragment NewBlogDialogFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance() =
-            NewRecipeDialogFragment().apply {
+            NewBlogDialogFragment().apply {
                 arguments = Bundle().apply {}
             }
     }

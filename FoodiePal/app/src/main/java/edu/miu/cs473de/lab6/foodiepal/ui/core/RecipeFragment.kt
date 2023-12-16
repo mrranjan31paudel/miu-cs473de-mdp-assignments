@@ -55,7 +55,7 @@ class RecipeFragment : Fragment() {
                 println("Hello: 1")
                 val menuInflater = activity?.menuInflater ?: return
                 println("Hello: 2")
-                menuInflater.inflate(R.menu.recipe_options, menu)
+                menuInflater.inflate(R.menu.context_options, menu)
                 println("Hello: 3")
                 val deleteOption = menu.findItem(R.id.deleteRecipeOption)
                 println("Hello: 4")
@@ -134,7 +134,7 @@ class RecipeFragment : Fragment() {
     private fun updateListWithNewRecipe(recipeId: Int) {
         val recipe = RecipeService.getRecipeById(recipeId) ?: return
         recipes.add(recipe)
-        recipesRecyclerView.adapter?.notifyItemInserted(recipes.size - 1)
+        recipesRecyclerView.adapter?.notifyItemInserted((recipes.size - 1).coerceAtLeast(0))
     }
 
     private fun getLoggedInUserId(): Int {
@@ -144,23 +144,16 @@ class RecipeFragment : Fragment() {
     }
 
     private fun initializeRecipes(): ArrayList<Recipe> {
-        val recipesInDb = RecipeService.getCount()
-
-        if (recipesInDb > 0) {
+        try {
             return RecipeService.getAllRecipes() as ArrayList<Recipe>
         }
-
-        val recipes = ArrayList<Recipe>()
-
-        recipes.add(Recipe(0, R.drawable.pizza, "Pizza", 60, 4.5f, "Ingredients: flour, cheese, marinara", 1, "Dummy User"))
-        recipes.add(Recipe(0, R.drawable.pizza, "Pizza", 60, 4.5f, "Ingredients: flour, cheese, marinara sauce, chicken, olives", 1, "Dummy User"))
-        recipes.add(Recipe(0, R.drawable.pizza, "Pizza", 60, 4.5f, "Ingredients: flour, cheese, marinara sauce, chicken, olives", 1, "Dummy User"))
-        recipes.add(Recipe(0, R.drawable.pizza, "Pizza", 60, 4.5f, "Ingredients: flour, cheese, marinara sauce, chicken, olives", 1, "Dummy User"))
-        recipes.add(Recipe(0, R.drawable.pizza, "Pizza", 60, 4.5f, "Ingredients: flour, cheese, marinara sauce, chicken, olives", 1, "Dummy User"))
-        recipes.add(Recipe(0, R.drawable.pizza, "Pizza", 60, 4.5f, "Ingredients: flour, cheese, marinara sauce, chicken, olives", 1, "Dummy User"))
-        recipes.add(Recipe(0, R.drawable.pizza, "Pizza", 60, 4.5f, "Ingredients: flour, cheese, marinara sauce, chicken, olives", 1, "Dummy User"))
-
-        return recipes
+        catch (e: Exception) {
+            Snackbar.make(viewBinding.root, "Failed to fetch recipes!", Snackbar.LENGTH_SHORT)
+                .setBackgroundTint(resources.getColor(R.color.red_1))
+                .setActionTextColor(resources.getColor(R.color.white))
+                .show()
+            return ArrayList()
+        }
     }
 
     private fun openNewRecipeFormDialog() {
@@ -176,6 +169,11 @@ class RecipeFragment : Fragment() {
 
         fragmentManager.setFragmentResultListener("on_creation_success", viewLifecycleOwner) {requestKey, bundle ->
             val newRecipeId = bundle.getInt("newRecipeId")
+
+            Snackbar.make(viewBinding.root, "Recipe created successfully!", Snackbar.LENGTH_SHORT)
+                .setBackgroundTint(resources.getColor(R.color.green_1))
+                .setActionTextColor(resources.getColor(R.color.white))
+                .show()
 
             if (newRecipeId > 0) {
                 updateListWithNewRecipe(newRecipeId)

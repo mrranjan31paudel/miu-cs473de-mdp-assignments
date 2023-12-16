@@ -2,11 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:title="@string/recipes_label"
-        android:id="@+id/bot_nav_recipes" />
+        android:id="@+id/bot_nav_recipes"
+        android:icon="@drawable/recipe_icon"/>
     <item
         android:title="@string/meal_planner_label"
-        android:id="@+id/bot_nav_meal_planner" />
+        android:id="@+id/bot_nav_meal_planner"
+        android:icon="@drawable/calendar_icon"/>
     <item
         android:title="@string/blog_label"
-        android:id="@+id/bot_nav_blog" />
+        android:id="@+id/bot_nav_blog"
+        android:icon="@drawable/blog_icon"/>
 </menu>

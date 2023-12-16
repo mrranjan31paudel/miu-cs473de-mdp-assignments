@@ -5,10 +5,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.core.BlogFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/blogsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/blog_label" />
+        android:layout_height="wrap_content" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addNewBlogButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/add_fab_desc"
+        android:src="@drawable/add_icon"
+        android:backgroundTint="@color/orange_1" />
 
 </FrameLayout>
