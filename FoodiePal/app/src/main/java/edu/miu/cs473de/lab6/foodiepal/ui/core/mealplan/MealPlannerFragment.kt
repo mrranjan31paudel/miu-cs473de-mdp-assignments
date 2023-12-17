@@ -1,4 +1,4 @@
-package edu.miu.cs473de.lab6.foodiepal.ui.core
+package edu.miu.cs473de.lab6.foodiepal.ui.core.mealplan
 
 import android.content.Context
 import android.os.Build
@@ -11,13 +11,13 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
-import edu.miu.cs473de.lab6.foodiepal.MealPlanRecyclerViewAdapter
-import edu.miu.cs473de.lab6.foodiepal.OnMealPlanItemClickListener
+import edu.miu.cs473de.lab6.foodiepal.recyclerviewadapters.MealPlanRecyclerViewAdapter
+import edu.miu.cs473de.lab6.foodiepal.listeners.OnMealPlanItemClickListener
 import edu.miu.cs473de.lab6.foodiepal.R
 import edu.miu.cs473de.lab6.foodiepal.databinding.FragmentMealPlannerBinding
 import edu.miu.cs473de.lab6.foodiepal.data.mealplan.MealPlan
 import edu.miu.cs473de.lab6.foodiepal.data.mealplan.MealPlanEntity
-import edu.miu.cs473de.lab6.foodiepal.service.MealPlanService
+import edu.miu.cs473de.lab6.foodiepal.service.mealplan.MealPlanService
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -54,7 +54,8 @@ class MealPlannerFragment : Fragment() {
         mealPlannerRecyclerView.layoutManager = LinearLayoutManager(activity)
         mealPlans = ArrayList()
         plansMap = HashMap()
-        mealPlannerRecyclerView.adapter = MealPlanRecyclerViewAdapter(generateListOfMealPlanDays(currDate), object: OnMealPlanItemClickListener {
+        mealPlannerRecyclerView.adapter = MealPlanRecyclerViewAdapter(generateListOfMealPlanDays(currDate), object:
+            OnMealPlanItemClickListener {
             override fun onMealPlanClick(view: View, mealPlan: MealPlan, position: Int) {
                 openMealPlanDialog(mealPlan, position)
             }

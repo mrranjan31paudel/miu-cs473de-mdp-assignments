@@ -1,4 +1,4 @@
-package edu.miu.cs473de.lab6.foodiepal
+package edu.miu.cs473de.lab6.foodiepal.recyclerviewadapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,13 +8,15 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import edu.miu.cs473de.lab6.foodiepal.listeners.OnRecipeContextMenuListeners
+import edu.miu.cs473de.lab6.foodiepal.R
 import edu.miu.cs473de.lab6.foodiepal.data.recipe.Recipe
 
 class RecipeRecyclerViewAdapter(var context: Fragment, var recipes: ArrayList<Recipe>, var onRecipeContextMenuListeners: OnRecipeContextMenuListeners): RecyclerView.Adapter<RecipeRecyclerViewAdapter.RecipeViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): RecipeRecyclerViewAdapter.RecipeViewHolder {
+    ): RecipeViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recipe_item_layout, parent, false)
         return RecipeViewHolder(view)
     }
@@ -26,7 +28,7 @@ class RecipeRecyclerViewAdapter(var context: Fragment, var recipes: ArrayList<Re
         return "$hr".padStart(2, '0') + ":" + "$min".padStart(2, '0')
     }
 
-    override fun onBindViewHolder(holder: RecipeRecyclerViewAdapter.RecipeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
         var imgSrc = recipes[position].imgSrc
 
         if (imgSrc == 0) {

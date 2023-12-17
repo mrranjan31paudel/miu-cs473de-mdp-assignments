@@ -1,4 +1,4 @@
-package edu.miu.cs473de.lab6.foodiepal
+package edu.miu.cs473de.lab6.foodiepal.activities
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -7,14 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.window.OnBackInvokedDispatcher
-import androidx.appcompat.view.menu.MenuBuilder
-import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import edu.miu.cs473de.lab6.foodiepal.data.user.User
+import edu.miu.cs473de.lab6.foodiepal.R
 import edu.miu.cs473de.lab6.foodiepal.databinding.ActivityCoreBinding
+import edu.miu.cs473de.lab6.foodiepal.recyclerviewadapters.CoreFragmentAdapter
 
 class CoreActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package edu.miu.cs473de.lab6.foodiepal.ui.core
+package edu.miu.cs473de.lab6.foodiepal.ui.core.blog
 
 import android.app.Dialog
 import android.content.Context
@@ -11,15 +11,13 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
-import androidx.viewbinding.ViewBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import edu.miu.cs473de.lab6.foodiepal.R
-import edu.miu.cs473de.lab6.foodiepal.data.blog.Blog
 import edu.miu.cs473de.lab6.foodiepal.databinding.FragmentNewBlogDialogBinding
 import edu.miu.cs473de.lab6.foodiepal.errors.ValidationException
-import edu.miu.cs473de.lab6.foodiepal.service.BlogService
+import edu.miu.cs473de.lab6.foodiepal.service.blog.BlogService
 
 
 /**

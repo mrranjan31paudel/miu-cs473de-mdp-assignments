@@ -1,8 +1,8 @@
-package edu.miu.cs473de.lab6.foodiepal.service
+package edu.miu.cs473de.lab6.foodiepal.service.recipe
 
-import android.util.Patterns
 import edu.miu.cs473de.lab6.foodiepal.data.recipe.Recipe
 import edu.miu.cs473de.lab6.foodiepal.errors.ValidationException
+import edu.miu.cs473de.lab6.foodiepal.service.DatabaseService
 import kotlinx.coroutines.runBlocking
 
 class RecipeService {
@@ -74,8 +74,9 @@ class RecipeService {
 
         fun createManyRecipes(recipes: ArrayList<Recipe>) {
             val recipeDao = DatabaseService.db?.recipeDao()
+            val recipes = recipes.map { r -> r.toEntity() } as ArrayList
             runBlocking {
-                recipeDao?.bulkInsertRecipe(recipes.map { r -> r.toEntity() } as ArrayList)
+                recipeDao?.bulkInsertRecipe(*(recipes.toTypedArray()))
             }
         }
 

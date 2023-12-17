@@ -1,4 +1,4 @@
-package edu.miu.cs473de.lab6.foodiepal
+package edu.miu.cs473de.lab6.foodiepal.listeners
 
 import android.view.View
 import edu.miu.cs473de.lab6.foodiepal.data.mealplan.MealPlan

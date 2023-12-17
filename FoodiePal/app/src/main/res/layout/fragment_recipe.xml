@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.core.RecipeFragment"
+    tools:context=".ui.core.recipe.RecipeFragment"
     android:id="@+id/recipeFragment">
 
     <ScrollView

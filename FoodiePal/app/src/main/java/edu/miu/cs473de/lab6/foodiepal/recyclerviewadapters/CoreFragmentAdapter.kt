@@ -1,13 +1,13 @@
-package edu.miu.cs473de.lab6.foodiepal
+package edu.miu.cs473de.lab6.foodiepal.recyclerviewadapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import edu.miu.cs473de.lab6.foodiepal.ui.core.AboutMeFragment
-import edu.miu.cs473de.lab6.foodiepal.ui.core.BlogFragment
-import edu.miu.cs473de.lab6.foodiepal.ui.core.ContactFragment
-import edu.miu.cs473de.lab6.foodiepal.ui.core.MealPlannerFragment
-import edu.miu.cs473de.lab6.foodiepal.ui.core.RecipeFragment
+import edu.miu.cs473de.lab6.foodiepal.ui.core.aboutme.AboutMeFragment
+import edu.miu.cs473de.lab6.foodiepal.ui.core.blog.BlogFragment
+import edu.miu.cs473de.lab6.foodiepal.ui.core.contact.ContactFragment
+import edu.miu.cs473de.lab6.foodiepal.ui.core.mealplan.MealPlannerFragment
+import edu.miu.cs473de.lab6.foodiepal.ui.core.recipe.RecipeFragment
 
 class CoreFragmentAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity) {
     override fun getItemCount(): Int = 5

@@ -1,19 +1,14 @@
-package edu.miu.cs473de.lab6.foodiepal.ui.core
+package edu.miu.cs473de.lab6.foodiepal.ui.core.mealplan
 
 import android.app.Dialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import edu.miu.cs473de.lab6.foodiepal.R
 import edu.miu.cs473de.lab6.foodiepal.databinding.FragmentMealPlanDialogBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val DATE_STRING = "dateString"
 private const val MEAL_PLAN = "mealPlanString"
 
@@ -56,12 +51,17 @@ class MealPlanDialogFragment : DialogFragment() {
             return
         }
 
-        parentFragmentManager.setFragmentResult("on_save", bundleOf("planString" to planText?.text.toString()))
+        parentFragmentManager.setFragmentResult("on_save",
+            bundleOf("planString" to planText?.text.toString())
+        )
         dismiss()
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val builder = MaterialAlertDialogBuilder(this.requireContext(), com.google.android.material.R.style.MaterialAlertDialog_Material3)
+        val builder = MaterialAlertDialogBuilder(
+            this.requireContext(),
+            com.google.android.material.R.style.MaterialAlertDialog_Material3
+        )
         builder
             .setView(viewBinding.root)
             .setBackgroundInsetStart(0)

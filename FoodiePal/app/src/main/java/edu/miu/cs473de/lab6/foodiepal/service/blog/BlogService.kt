@@ -1,13 +1,12 @@
-package edu.miu.cs473de.lab6.foodiepal.service
+package edu.miu.cs473de.lab6.foodiepal.service.blog
 
 import android.os.Build
 import androidx.annotation.RequiresApi
 import edu.miu.cs473de.lab6.foodiepal.data.blog.Blog
 import edu.miu.cs473de.lab6.foodiepal.data.blog.BlogEntity
 import edu.miu.cs473de.lab6.foodiepal.errors.ValidationException
+import edu.miu.cs473de.lab6.foodiepal.service.DatabaseService
 import kotlinx.coroutines.runBlocking
-import java.time.Instant
-import java.time.format.DateTimeFormatter
 
 class BlogService {
 

@@ -1,4 +1,4 @@
-package edu.miu.cs473de.lab6.foodiepal.ui.core
+package edu.miu.cs473de.lab6.foodiepal.ui.core.contact
 
 import android.content.Intent
 import android.net.Uri
@@ -7,8 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.viewbinding.ViewBinding
-import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
 import edu.miu.cs473de.lab6.foodiepal.R
 import edu.miu.cs473de.lab6.foodiepal.databinding.FragmentContactBinding

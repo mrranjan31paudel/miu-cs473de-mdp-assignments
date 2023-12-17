@@ -1,6 +1,7 @@
-package edu.miu.cs473de.lab6.foodiepal.ui.core
+package edu.miu.cs473de.lab6.foodiepal.ui.core.recipe
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.ContextMenu
 import androidx.fragment.app.Fragment
@@ -11,12 +12,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
-import edu.miu.cs473de.lab6.foodiepal.OnRecipeContextMenuListeners
+import edu.miu.cs473de.lab6.foodiepal.listeners.OnRecipeContextMenuListeners
 import edu.miu.cs473de.lab6.foodiepal.R
-import edu.miu.cs473de.lab6.foodiepal.RecipeRecyclerViewAdapter
+import edu.miu.cs473de.lab6.foodiepal.recyclerviewadapters.RecipeRecyclerViewAdapter
 import edu.miu.cs473de.lab6.foodiepal.data.recipe.Recipe
 import edu.miu.cs473de.lab6.foodiepal.databinding.FragmentRecipeBinding
-import edu.miu.cs473de.lab6.foodiepal.service.RecipeService
+import edu.miu.cs473de.lab6.foodiepal.service.recipe.RecipeService
 
 /**
  * A simple [Fragment] subclass.
@@ -44,7 +45,8 @@ class RecipeFragment : Fragment() {
         recipes = initializeRecipes()
         loggedInUserId = getLoggedInUserId()
         val activity = this.activity
-        recipesRecyclerView.adapter = RecipeRecyclerViewAdapter(this, recipes, object: OnRecipeContextMenuListeners {
+        recipesRecyclerView.adapter = RecipeRecyclerViewAdapter(this, recipes, object:
+            OnRecipeContextMenuListeners {
             override fun onRecipeContextMenuCreate(
                 menu: ContextMenu,
                 view: View,
@@ -85,7 +87,26 @@ class RecipeFragment : Fragment() {
     }
 
     private fun onRecipeShare() {
-        // do social sharing
+        if (selectedRecipe != null && selectedRecipePosition > -1) {
+            try {
+                val sendIntent: Intent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    val recipeShareText = "Recipe: ${selectedRecipe!!.name} (Duration: ${selectedRecipe!!.cookingTimeInMin} mins)\n\n${selectedRecipe!!.description}\n\nBy: ${selectedRecipe!!.authorName}\nSource: Foodiepal"
+                    putExtra(Intent.EXTRA_TEXT, recipeShareText)
+                    type = "text/plain"
+                }
+
+                val shareIntent = Intent.createChooser(sendIntent, null)
+                startActivity(shareIntent)
+            }
+            catch (e: Exception) {
+                Snackbar.make(viewBinding.root, "Failed to perform the action!", Snackbar.LENGTH_SHORT)
+                    .setBackgroundTint(resources.getColor(R.color.red_1))
+                    .setActionTextColor(resources.getColor(R.color.white))
+                    .show()
+            }
+        }
+
         selectedRecipe = null
         selectedRecipePosition = -1
     }

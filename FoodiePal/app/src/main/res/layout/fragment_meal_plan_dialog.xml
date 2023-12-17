@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.core.MealPlanDialogFragment"
+    tools:context=".ui.core.mealplan.MealPlanDialogFragment"
     android:id="@+id/mealPlanDialogForm"
     android:padding="32dp"
     android:backgroundTint="@color/white"

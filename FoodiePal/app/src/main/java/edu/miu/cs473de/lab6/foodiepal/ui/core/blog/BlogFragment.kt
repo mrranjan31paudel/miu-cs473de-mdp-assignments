@@ -1,22 +1,19 @@
-package edu.miu.cs473de.lab6.foodiepal.ui.core
+package edu.miu.cs473de.lab6.foodiepal.ui.core.blog
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
-import edu.miu.cs473de.lab6.foodiepal.BlogRecyclerViewAdapter
-import edu.miu.cs473de.lab6.foodiepal.OnBlogItemViewClickListener
+import edu.miu.cs473de.lab6.foodiepal.recyclerviewadapters.BlogRecyclerViewAdapter
+import edu.miu.cs473de.lab6.foodiepal.listeners.OnBlogItemViewClickListener
 import edu.miu.cs473de.lab6.foodiepal.R
 import edu.miu.cs473de.lab6.foodiepal.data.blog.Blog
 import edu.miu.cs473de.lab6.foodiepal.databinding.FragmentBlogBinding
-import edu.miu.cs473de.lab6.foodiepal.service.BlogService
-import edu.miu.cs473de.lab6.foodiepal.service.RecipeService
+import edu.miu.cs473de.lab6.foodiepal.service.blog.BlogService
 
 /**
  * A simple [Fragment] subclass.
@@ -40,7 +37,8 @@ class BlogFragment : Fragment() {
         blogRecyclerView = viewBinding.blogsRecyclerView
         blogRecyclerView.layoutManager = LinearLayoutManager(activity)
         blogs = initializeBlogs()
-        blogRecyclerView.adapter = BlogRecyclerViewAdapter(blogs, object: OnBlogItemViewClickListener {
+        blogRecyclerView.adapter = BlogRecyclerViewAdapter(blogs, object:
+            OnBlogItemViewClickListener {
             override fun onBlogViewClick(blog: Blog, position: Int) {
                 openFullScreenBlogReaderDialog(blog)
             }

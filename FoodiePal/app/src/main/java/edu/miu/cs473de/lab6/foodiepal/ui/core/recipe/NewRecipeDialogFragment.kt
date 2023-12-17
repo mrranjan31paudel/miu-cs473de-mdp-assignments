@@ -1,21 +1,18 @@
-package edu.miu.cs473de.lab6.foodiepal.ui.core
+package edu.miu.cs473de.lab6.foodiepal.ui.core.recipe
 
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import edu.miu.cs473de.lab6.foodiepal.R
 import edu.miu.cs473de.lab6.foodiepal.databinding.FragmentNewRecipeBinding
 import edu.miu.cs473de.lab6.foodiepal.errors.ValidationException
-import edu.miu.cs473de.lab6.foodiepal.service.RecipeService
+import edu.miu.cs473de.lab6.foodiepal.service.recipe.RecipeService
 
 class NewRecipeDialogFragment : DialogFragment() {
 

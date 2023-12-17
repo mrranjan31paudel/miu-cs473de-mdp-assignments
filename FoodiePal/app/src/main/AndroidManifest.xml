@@ -13,10 +13,10 @@
         android:theme="@style/Theme.FoodiePal"
         tools:targetApi="31">
         <activity
-            android:name=".CoreActivity"
+            android:name=".activities.CoreActivity"
             android:exported="false" />
         <activity
-            android:name=".AuthenticationActivity"
+            android:name=".activities.AuthenticationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

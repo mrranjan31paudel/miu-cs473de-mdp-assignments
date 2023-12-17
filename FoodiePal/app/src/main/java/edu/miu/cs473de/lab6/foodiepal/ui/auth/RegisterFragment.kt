@@ -11,7 +11,7 @@ import com.google.android.material.textfield.TextInputLayout
 import edu.miu.cs473de.lab6.foodiepal.R
 import edu.miu.cs473de.lab6.foodiepal.databinding.FragmentRegisterBinding
 import edu.miu.cs473de.lab6.foodiepal.errors.ValidationException
-import edu.miu.cs473de.lab6.foodiepal.service.UserService
+import edu.miu.cs473de.lab6.foodiepal.service.user.UserService
 
 /**
  * A simple [Fragment] subclass.

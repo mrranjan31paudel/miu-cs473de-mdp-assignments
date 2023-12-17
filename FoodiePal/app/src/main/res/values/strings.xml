@@ -39,6 +39,24 @@
     <string name="contact_tel">1111111111</string>
     <string name="contact_email">foodiepal@mail.com</string>
 
+    <string name="culinary_journey_title">Culinary Journey</string>
+    <string name="culinary_journey_desc">Hello, food enthusiasts! I\'m Ranjan Paudel, the passionate creator behind Foodiepal, your go-to app for culinary delights.
+        \n\nMy journey in the world of cooking started with a simple fascination for flavors and the joy of bringing people together through delicious meals. From experimenting in my home kitchen to exploring diverse cuisines, I\'ve embarked on a culinary adventure that has shaped the essence of Foodiepal. Each recipe in this app reflects my love for food and the joy of sharing delightful moments around the table.</string>
+
+    <string name="favorite_recipes_title">Favorite Recipes</string>
+    <string name="favorite_recipes_desc">In the process of curating Foodiepal, I\'ve had the pleasure of discovering and crafting some of my favorite recipes. These are not just dishes; they are stories on a plate, each ingredient carefully chosen to create a symphony of flavors.
+        Some of my all-time favorites include:\n
+        - Momos:\nThe fast food of Nepal, which looks like dumplings with juicy meat/veg stuffing inside it. You just need flour, some ground and spiced stuffing of your choice and a hot sauce to dip.\n\n
+        - Chicken Spaghetti with cheese:\nI really like the spaghetti mixed with fried chicken and cheese on to of it.
+        \n\nFeel free to explore these recipes and experience the joy they bring to my kitchen and, hopefully, to yours.
+    </string>
+    <string name="food_philosophy_title">Food Philosophy</string>
+    <string name="food_philosophy_desc">My food philosophy is simple yet profound: Food is not just nourishment; it\'s an expression of culture, love, and creativity. It has the power to evoke memories, foster connections, and bring pure happiness. In Foodiepal, I hope you will be able to share not just recipes but the stories and emotions that make each dish special.
+    \n\nWhether you\'re a seasoned chef or a novice in the kitchen, Foodiepal is designed to inspire and on your culinary journey. Embrace the joy of cooking, savor every bite, and create memorable experiences through the magic of food.
+    </string>
+
+    <string name="owner_email">ranjanpaudel@mail.com</string>
+
     <string-array name="rating_values">
         <item>0</item>
         <item>1</item>

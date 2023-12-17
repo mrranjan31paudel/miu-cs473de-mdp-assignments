@@ -26,7 +26,7 @@ interface RecipeDao {
     suspend fun createRecipe(recipe: RecipeEntity): Long
 
     @Insert
-    suspend fun bulkInsertRecipe(recipes: ArrayList<RecipeEntity>)
+    suspend fun bulkInsertRecipe(vararg recipe: RecipeEntity)
 
     @Update
     suspend fun updateRecipe(updatedRecipe: RecipeEntity)

@@ -1,7 +1,6 @@
-package edu.miu.cs473de.lab6.foodiepal
+package edu.miu.cs473de.lab6.foodiepal.recyclerviewadapters
 
 import android.content.Context
-import android.content.res.Resources
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +11,8 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.divider.MaterialDivider
+import edu.miu.cs473de.lab6.foodiepal.listeners.OnMealPlanItemClickListener
+import edu.miu.cs473de.lab6.foodiepal.R
 import edu.miu.cs473de.lab6.foodiepal.data.mealplan.MealPlan
 
 class MealPlanRecyclerViewAdapter(var mealPlans: ArrayList<MealPlan>, var clickListener: OnMealPlanItemClickListener): RecyclerView.Adapter<MealPlanRecyclerViewAdapter.MealPlanViewHolder>() {
@@ -21,7 +22,7 @@ class MealPlanRecyclerViewAdapter(var mealPlans: ArrayList<MealPlan>, var clickL
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): MealPlanRecyclerViewAdapter.MealPlanViewHolder {
+    ): MealPlanViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.meal_plan_item, parent, false)
         context = parent.context
         return MealPlanViewHolder(view)
@@ -29,7 +30,7 @@ class MealPlanRecyclerViewAdapter(var mealPlans: ArrayList<MealPlan>, var clickL
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(
-        holder: MealPlanRecyclerViewAdapter.MealPlanViewHolder,
+        holder: MealPlanViewHolder,
         position: Int
     ) {
         holder.dayOfWeek.text = mealPlans[position].date.dayOfWeek.name.subSequence(0, 3)

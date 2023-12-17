@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/newBlogForm"
+    android:id="@+id/newAboutMeForm"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="32dp"
@@ -11,20 +11,20 @@
     app:backgroundInsetEnd="1dp"
     app:backgroundInsetTop="1dp"
     app:backgroundInsetBottom="1dp"
-    tools:context=".ui.core.blog.NewBlogDialogFragment">
+    tools:context=".ui.core.aboutme.NewAboutMeSectionFragment">
 
     <TextView
-        android:id="@+id/newBlogFormTitle"
+        android:id="@+id/newAboutMeSectionTitle"
         style="@style/TextAppearance.Material3.HeadlineMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Blog"
+        android:text="New Section"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/blogTitle"
+        android:id="@+id/aboutMeItemTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -33,7 +33,7 @@
         app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newBlogFormTitle">
+        app:layout_constraintTop_toBottomOf="@+id/newAboutMeSectionTitle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -42,7 +42,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/blogContent"
+        android:id="@+id/aboutMeItemDescription"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginTop="16dp"
@@ -52,7 +52,7 @@
         app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/blogTitle">
+        app:layout_constraintTop_toBottomOf="@+id/aboutMeItemTitle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -60,16 +60,16 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/postBlogButton"
+        android:id="@+id/addSectionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="24dp"
-        android:text="Post"
+        android:text="Add"
         app:layout_constraintEnd_toStartOf="@+id/cancelButton"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/blogContent" />
+        app:layout_constraintTop_toBottomOf="@+id/aboutMeItemDescription" />
 
     <Button
         android:id="@+id/cancelButton"
@@ -81,5 +81,5 @@
         android:text="Cancel"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/blogContent" />
+        app:layout_constraintTop_toBottomOf="@+id/aboutMeItemDescription" />
 </androidx.constraintlayout.widget.ConstraintLayout>

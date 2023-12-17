@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.core.MealPlannerFragment"
+    tools:context=".ui.core.mealplan.MealPlannerFragment"
     android:id="@+id/mealPlannerFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout

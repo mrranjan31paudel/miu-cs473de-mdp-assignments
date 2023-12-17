@@ -11,12 +11,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
-import edu.miu.cs473de.lab6.foodiepal.CoreActivity
+import edu.miu.cs473de.lab6.foodiepal.activities.CoreActivity
 import edu.miu.cs473de.lab6.foodiepal.R
 import edu.miu.cs473de.lab6.foodiepal.data.user.User
 import edu.miu.cs473de.lab6.foodiepal.databinding.FragmentLoginBinding
 import edu.miu.cs473de.lab6.foodiepal.errors.ValidationException
-import edu.miu.cs473de.lab6.foodiepal.service.UserService
+import edu.miu.cs473de.lab6.foodiepal.service.user.UserService
 
 /**
  * A simple [Fragment] subclass.

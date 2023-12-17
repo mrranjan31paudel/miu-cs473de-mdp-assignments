@@ -1,8 +1,9 @@
-package edu.miu.cs473de.lab6.foodiepal.service
+package edu.miu.cs473de.lab6.foodiepal.service.user
 
 import android.util.Patterns
 import edu.miu.cs473de.lab6.foodiepal.data.user.User
 import edu.miu.cs473de.lab6.foodiepal.errors.ValidationException
+import edu.miu.cs473de.lab6.foodiepal.service.DatabaseService
 import kotlinx.coroutines.runBlocking
 
 class UserService {
@@ -69,6 +70,15 @@ class UserService {
             }
 
             return existingUser
+        }
+
+        fun getUserByEmail(email: String): User? {
+            val userDao = DatabaseService.db?.userDao()
+            val user = runBlocking {
+                return@runBlocking userDao?.getUserByEmail(email)
+            }
+
+            return user
         }
     }
 }

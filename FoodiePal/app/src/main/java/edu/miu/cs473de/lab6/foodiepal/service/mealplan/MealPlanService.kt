@@ -1,9 +1,10 @@
-package edu.miu.cs473de.lab6.foodiepal.service
+package edu.miu.cs473de.lab6.foodiepal.service.mealplan
 
 import android.os.Build
 import androidx.annotation.RequiresApi
 import edu.miu.cs473de.lab6.foodiepal.data.mealplan.MealPlan
 import edu.miu.cs473de.lab6.foodiepal.data.mealplan.MealPlanEntity
+import edu.miu.cs473de.lab6.foodiepal.service.DatabaseService
 import kotlinx.coroutines.runBlocking
 import java.time.ZoneId
 
