@@ -49,9 +49,7 @@ class PlantDetailsFragment : BaseFragment() {
 
         viewBinding.deletePlantButton.setOnClickListener { v ->
             val plant = model.plant.value
-            println("Hello: $plant")
             if (plant != null && plant.id != 0L) {
-                println("Hello: $plant")
                 deletePlant(plant)
             }
         }
