@@ -87,7 +87,7 @@ When the user deletes the plant in the PlantDetail fragment, user is navigated b
 </tbody>
 </table>
 
-### Gardenlog Database [Room]
+### GardenLog Database [Room]
 The plants are stored in the Room database and the only existing entity is `Plant` entity. 
 
 GardenLogDatabase is configured to provide singleton and synchronized instance of database object. PlantDao is the class where different CRUD queries are defined.
@@ -101,21 +101,23 @@ No view model associated as there is no state needed to be persisted.
 #### GardenLog fragment
 A view model that extends `AndroidViewModel` (child of `ViewModel`) is associated with GardenLog fragment. That view-model holds a reference to a `LiveData` reference returned by `PlantDao.getPlants()` method, and is observed for change. Such that, whenever a change is detected in the `LiveData` object the recycler view is updated. This helps to synchronize the Room database change with the UI representation.
 
-### PlantDetail fragment
+#### PlantDetail fragment
 This fragment also associates a view-model which contains a `MutableLiveData` reference to a Plant object, which is populated with the result from database query to find plant by plantId [obtained as an argument to navigation action from GardenLog].
 
-### NewPlantForm fragment
+#### NewPlantForm fragment
 This fragment also does not have any viewmodel associated. The data in the `EditText` fields are preserved automatically if unique IDs are provided to corresponding `EditText` views and the fragment's container view.
 
-### Coroutine
+### Coroutines
 In this app, there is a `BaseFragment` class that extends `Fragment` and implements `CoroutineScope` interface. This is to centralize the `Job` management: creating a coroutine job in `onCreate` and canceling in `onDestroy` lifecycle methods, such that any Fragment that wants to run some non-blocking coroutines can just extend this `BaseFragment` class and use the inherited coroutine scope.
 
 GardenLog, PlantDetail, and NewPlantForm fragments extend the `BaseFragment` and use the inherited coroutine scope for database access.
 
 ## Build and Run
-Clone the project
+Clone the project and change branch
 ```shell
 git clone https://github.com/mrranjan31paudel/miu-cs473de-mdp-assignments.git
+cd miu-cs473de-mdp-assignments
+git checkout assignment-7-gardening
 ```
 Open the `GardeningJournal` project with Android studio. You can then build and launch the app either with AVD or connect your Android phone.
 
