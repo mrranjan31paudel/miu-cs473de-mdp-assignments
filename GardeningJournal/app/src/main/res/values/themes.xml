@@ -1,0 +1,14 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.GardeningJournal" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+         <item name="colorPrimary">@color/green1</item>
+         <item name="colorSecondary">@color/green2</item>
+        <item name="colorAccent">@color/yellow1</item>
+        <item name="colorOnPrimary">@color/white2</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorError">@color/red</item>
+    </style>
+
+    <style name="Theme.GardeningJournal" parent="Base.Theme.GardeningJournal" />
+</resources>

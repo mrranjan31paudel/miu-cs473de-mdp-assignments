@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">GardeningJournal</string>
+    <string name="home_label">Home</string>
+    <string name="garden_log_label">Garden Log</string>
+    <string name="plant_details_label">Plant Details</string>
+    <string name="add_new_plant_log">Add new plant log</string>
+    <string name="go_to_log">Garden Log</string>
+    <string name="plant_name">Name</string>
+    <string name="plant_type">Type</string>
+    <string name="plant_watering_frequency">Watering frequency [per day]</string>
+    <string name="planting_date">Planing date [mm/dd/yyyy]</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="plant_name_error_msg">Plant name is required and must be at least 2 characters!</string>
+    <string name="plant_type_error_msg">Plant type is required and must be at least 2 characters!</string>
+    <string name="watering_frequency_error_msg">Watering frequency is required and must be within range 1–10!</string>
+    <string name="planting_date_error_msg">Planting date is required!</string>
+    <string name="plant_log_save_failed">Failed to save plant log!</string>
+    <string name="plant_log_save_success">Successfully saved plant log!</string>
+    <string name="plant_detail_load_failed">Failed to load plant detail!</string>
+    <string name="plant_log_delete_success">Successfully deleted plant log!</string>
+    <string name="plant_log_delete_failed">Failed to delete plant!</string>
+    <string name="plant_id_arg">plantId</string>
+    <string name="delete_plant">Delete plant</string>
+</resources>

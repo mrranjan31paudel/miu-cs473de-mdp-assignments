@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="edu.miu.cs473de.lab6.gardeningjournal.ui.fragments.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_gardenLogFragment"
+            app:destination="@id/gardenLogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gardenLogFragment"
+        android:name="edu.miu.cs473de.lab6.gardeningjournal.ui.fragments.GardenLogFragment"
+        android:label="Garden Log"
+        tools:layout="@layout/fragment_garden_log">
+        <action
+            android:id="@+id/action_gardenLogFragment_to_plantDetailsFragment"
+            app:destination="@id/plantDetailsFragment" />
+        <action
+            android:id="@+id/action_gardenLogFragment_to_newGardenLogFormFragment"
+            app:destination="@id/newGardenLogFormFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/plantDetailsFragment"
+        android:name="edu.miu.cs473de.lab6.gardeningjournal.ui.fragments.PlantDetailsFragment"
+        android:label="Plant Detail"
+        tools:layout="@layout/fragment_plant_details">
+        <argument
+            android:name="plantId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_plantDetailsFragment_to_gardenLogFragment"
+            app:destination="@id/gardenLogFragment"
+            app:popUpTo="@id/gardenLogFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/newGardenLogFormFragment"
+        android:name="edu.miu.cs473de.lab6.gardeningjournal.ui.fragments.NewGardenLogFormFragment"
+        android:label="New Plant"
+        tools:layout="@layout/fragment_new_garden_log_form">
+        <action
+            android:id="@+id/action_newGardenLogFormFragment_to_gardenLogFragment"
+            app:destination="@id/gardenLogFragment"
+            app:popUpTo="@id/gardenLogFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+</navigation>
